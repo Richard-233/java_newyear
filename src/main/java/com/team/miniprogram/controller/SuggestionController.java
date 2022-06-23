@@ -1,10 +1,12 @@
 package com.team.miniprogram.controller;
 
+import com.team.miniprogram.common.ApiRestResponse;
 import com.team.miniprogram.model.pojo.Suggestion;
 import com.team.miniprogram.service.SuggestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +17,14 @@ import javax.servlet.http.HttpServletRequest;
  * @author Richard Young
  */
 @Controller
+@RequestMapping("/suggestion")
 public class SuggestionController {
     @Autowired
     SuggestionService suggestionService;
 
-    @GetMapping("/get")
+    @GetMapping("/list")
     @ResponseBody
-    public String suggestionList(HttpServletRequest request) {
-        return "openid是这个"+request.getHeader("X-WX-OPENID");
+    public ApiRestResponse suggestionList(HttpServletRequest request) {
+        return null;
     }
 }

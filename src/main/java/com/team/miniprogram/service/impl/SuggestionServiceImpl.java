@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @author Rachard Young
  */
 @Service
-public class SuggestionImpl implements SuggestionService {
+public class SuggestionServiceImpl implements SuggestionService {
     @Autowired
     SuggestionMapper suggestionMapper;
 

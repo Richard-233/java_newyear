@@ -92,6 +92,7 @@ public class Suggestion {
      *
      * @mbg.generated
      */
+
     public Long getId() {
         return id;
     }
