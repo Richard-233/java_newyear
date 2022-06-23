@@ -1,5 +1,8 @@
 package com.team.miniprogram.model.pojo;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class Suggestion {
@@ -55,6 +58,7 @@ public class Suggestion {
      *
      * @mbg.generated
      */
+    @Max(4)@Min(1)
     private Integer type;
 
     /**
@@ -92,6 +96,16 @@ public class Suggestion {
      *
      * @mbg.generated
      */
+
+    private Long approval;
+
+    public Long getApproval() {
+        return approval;
+    }
+
+    public void setApproval(Long approval) {
+        this.approval = approval;
+    }
 
     public Long getId() {
         return id;

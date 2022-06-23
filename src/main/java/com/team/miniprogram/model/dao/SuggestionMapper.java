@@ -1,7 +1,11 @@
 package com.team.miniprogram.model.dao;
 
 import com.team.miniprogram.model.pojo.Suggestion;
+import com.team.miniprogram.model.request.SuggestionListReq;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface SuggestionMapper {
@@ -52,4 +56,7 @@ public interface SuggestionMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(Suggestion record);
+
+
+    List<Suggestion> list(@Param("request") SuggestionListReq suggestionListReq);
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
+import static com.team.miniprogram.common.Constant.OPENID;
+
 @Controller
 public class UserController {
     @Autowired
@@ -23,7 +25,7 @@ public class UserController {
         User user = new User();
         user.setImage(avatarUrl);
         user.setNickname(nickName);
-        user.setOpenid(request.getHeader("X-WX-OPENID"));
+        user.setOpenid(request.getHeader(OPENID));
         System.out.println(user);
         userService.setUserInfo(user);
         return ApiRestResponse.success();
@@ -33,7 +35,7 @@ public class UserController {
     @ResponseBody
     public ApiRestResponse getUserInfo(HttpServletRequest request) {
         User user = new User();
-        user.setOpenid(request.getHeader("X-WX-OPENID"));
+        user.setOpenid(request.getHeader(OPENID));
         user = userService.getUserInfo(user);
         if(user==null){
             return ApiRestResponse.error(ProgramExceptionEnum.SELECT_FAILED);
