@@ -1,6 +1,7 @@
 package com.team.miniprogram.controller;
 
 import com.team.miniprogram.common.ApiRestResponse;
+import com.team.miniprogram.model.pojo.Approval;
 import com.team.miniprogram.model.pojo.Suggestion;
 import com.team.miniprogram.model.request.SuggestionListReq;
 import com.team.miniprogram.service.SuggestionService;
@@ -40,6 +41,16 @@ public class SuggestionController {
     public ApiRestResponse addSuggestion(@Valid @RequestBody Suggestion suggestion, HttpServletRequest request){
         suggestion.setUserId(request.getHeader(OPENID));
         suggestionService.add(suggestion);
+        return ApiRestResponse.success();
+    }
+
+    @GetMapping("/approval")
+    @ResponseBody
+    public ApiRestResponse approval(Long id,HttpServletRequest request){
+        Approval approval = new Approval();
+        approval.setSuggestionId(id);
+        approval.setUserId(request.getHeader(OPENID));
+        suggestionService.approval(approval);
         return ApiRestResponse.success();
     }
 }

@@ -57,6 +57,6 @@ public interface SuggestionMapper {
      */
     int updateByPrimaryKey(Suggestion record);
 
-
     List<Suggestion> list(@Param("request") SuggestionListReq suggestionListReq);
+
 }

@@ -1,7 +1,11 @@
 package com.team.miniprogram.service.impl;
 
 import com.github.pagehelper.PageInfo;
+import com.team.miniprogram.exception.ProgramException;
+import com.team.miniprogram.exception.ProgramExceptionEnum;
 import com.team.miniprogram.model.dao.SuggestionMapper;
+import com.team.miniprogram.model.dao.ApprovalMapper;
+import com.team.miniprogram.model.pojo.Approval;
 import com.team.miniprogram.model.pojo.Suggestion;
 import com.team.miniprogram.model.request.SuggestionListReq;
 import com.team.miniprogram.service.SuggestionService;
@@ -20,6 +24,9 @@ public class SuggestionServiceImpl implements SuggestionService {
     @Autowired
     SuggestionMapper suggestionMapper;
 
+    @Autowired
+    ApprovalMapper approvalMapper;
+
     @Override
     public PageInfo list(SuggestionListReq suggestionListReq){
         List<Suggestion> suggestionList = suggestionMapper.list(suggestionListReq);
@@ -31,4 +38,17 @@ public class SuggestionServiceImpl implements SuggestionService {
     public void add(Suggestion suggestion){
         suggestionMapper.insertSelective(suggestion);
     }
+
+    @Override
+    public void approval(Approval approval) {
+        Approval approval_select = approvalMapper.selectApproval(approval);
+        if(approval_select==null){
+            approvalMapper.insertSelective(approval);
+        }
+        else{
+            approvalMapper.deleteApproval(approval);
+        }
+    }
+
+
 }
