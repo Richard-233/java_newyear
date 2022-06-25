@@ -42,11 +42,20 @@ public class SuggestionServiceImpl implements SuggestionService {
     @Override
     public void approval(Approval approval) {
         Approval approval_select = approvalMapper.selectApproval(approval);
+        Suggestion suggestion_select = suggestionMapper.selectByPrimaryKey(approval.getSuggestionId());
         if(approval_select==null){
             approvalMapper.insertSelective(approval);
+            Suggestion suggestion = new Suggestion();
+            suggestion.setId(approval.getSuggestionId());
+            suggestion.setNum(suggestion_select.getNum()+1);
+            suggestionMapper.updateByPrimaryKeySelective(suggestion);
         }
         else{
             approvalMapper.deleteApproval(approval);
+            Suggestion suggestion = new Suggestion();
+            suggestion.setId(approval.getSuggestionId());
+            suggestion.setNum(suggestion_select.getNum()-1);
+            suggestionMapper.updateByPrimaryKeySelective(suggestion);
         }
     }
 
