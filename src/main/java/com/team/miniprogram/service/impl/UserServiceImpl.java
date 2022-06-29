@@ -1,5 +1,7 @@
 package com.team.miniprogram.service.impl;
 
+import com.team.miniprogram.exception.ProgramException;
+import com.team.miniprogram.exception.ProgramExceptionEnum;
 import com.team.miniprogram.model.dao.UserMapper;
 import com.team.miniprogram.model.pojo.User;
 import com.team.miniprogram.service.UserService;
@@ -13,12 +15,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void setUserInfo(User user) {
-        int count = userMapper.updateByPrimaryKeySelective(user);
-        if (count == 0) userMapper.insertSelective(user);
+        User user_select = userMapper.selectByPrimaryKey(user.getOpenid());
+        if(user_select==null){
+            throw new ProgramException(ProgramExceptionEnum.INSERT_FAILED);
+        }
+        else userMapper.updateByPrimaryKeySelective(user);
     }
 
     @Override
     public User getUserInfo(User user){
-        return userMapper.selectByPrimaryKey(user.getOpenid());
+        User user_select = userMapper.selectByPrimaryKey(user.getOpenid());
+        if(user_select!=null){
+            return user_select;
+        }
+        else{
+            userMapper.insertSelective(user);
+            return user;
+        }
     }
 }

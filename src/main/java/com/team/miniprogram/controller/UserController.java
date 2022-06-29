@@ -26,7 +26,6 @@ public class UserController {
         user.setImage(avatarUrl);
         user.setNickname(nickName);
         user.setOpenid(request.getHeader(OPENID));
-        System.out.println(user);
         userService.setUserInfo(user);
         return ApiRestResponse.success();
     }
