@@ -44,8 +44,14 @@
 <!--        <table tableName="miniprogram_suggestion" domainObjectName="Suggestion" enableCountByExample="false" enableUpdateByExample="false"-->
 <!--               enableDeleteByExample="false"-->
 <!--               enableSelectByExample="false" selectByExampleQueryId="false"/>-->
-        <table tableName="miniprogram_approval" domainObjectName="Approval" enableCountByExample="false" enableUpdateByExample="false"
+<!--        <table tableName="miniprogram_approval" domainObjectName="Approval" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false" selectByExampleQueryId="false"/>-->
+        <table tableName="miniprogram_product" domainObjectName="Product" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"/>
+<!--        <table tableName="miniprogram_order" domainObjectName="Order" enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false" selectByExampleQueryId="false"/>-->
     </context>
 </generatorConfiguration>

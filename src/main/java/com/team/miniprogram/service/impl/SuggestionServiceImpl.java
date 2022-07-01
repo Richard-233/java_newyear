@@ -1,5 +1,6 @@
 package com.team.miniprogram.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.team.miniprogram.exception.ProgramException;
 import com.team.miniprogram.exception.ProgramExceptionEnum;
@@ -29,7 +30,16 @@ public class SuggestionServiceImpl implements SuggestionService {
 
     @Override
     public PageInfo list(SuggestionListReq suggestionListReq){
+        PageHelper.startPage(suggestionListReq.getPageNum(), suggestionListReq.getPageSize());
         List<Suggestion> suggestionList = suggestionMapper.list(suggestionListReq);
+        PageInfo pageInfo = new PageInfo(suggestionList);
+        return pageInfo;
+    }
+
+    @Override
+    public PageInfo myList(SuggestionListReq suggestionListReq){
+        PageHelper.startPage(suggestionListReq.getPageNum(), suggestionListReq.getPageSize());
+        List<Suggestion> suggestionList = suggestionMapper.myList(suggestionListReq);
         PageInfo pageInfo = new PageInfo(suggestionList);
         return pageInfo;
     }

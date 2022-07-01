@@ -53,4 +53,12 @@ public class SuggestionController {
         suggestionService.approval(approval);
         return ApiRestResponse.success();
     }
+
+    @GetMapping("/myList")
+    @ResponseBody
+    public ApiRestResponse suggestionMyList(SuggestionListReq suggestionListReq,HttpServletRequest request) {
+        suggestionListReq.setOpenid(request.getHeader(OPENID));
+        PageInfo list = suggestionService.myList(suggestionListReq);
+        return ApiRestResponse.success(list);
+    }
 }

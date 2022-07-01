@@ -59,4 +59,6 @@ public interface SuggestionMapper {
 
     List<Suggestion> list(@Param("request") SuggestionListReq suggestionListReq);
 
+    List<Suggestion> myList(@Param("request") SuggestionListReq suggestionListReq);
+
 }

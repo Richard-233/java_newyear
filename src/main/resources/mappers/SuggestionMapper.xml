@@ -182,4 +182,18 @@
     </if>
     order by num desc
   </select>
+  <select id="myList" resultMap="BaseResultMap" parameterType="com.team.miniprogram.model.request.SuggestionListReq">
+    select
+    <include refid="Base_Column_List"/>,(select count(1) from miniprogram_approval where id = suggestion_id and miniprogram_approval.user_id=#{request.openid,jdbcType=VARCHAR} ) as approval
+    from miniprogram_suggestion
+    where
+    <if test="request.type != null">
+      type = #{request.type,jdbcType=INTEGER} and
+    </if>
+    <if test="request.id != null">
+      where id = #{request.id,jdbcType=INTEGER} and
+    </if>
+    user_id=#{request.openid,jdbcType=VARCHAR}
+    order by num desc
+  </select>
 </mapper>

@@ -3,9 +3,9 @@ package com.team.miniprogram.model.request;
 public class SuggestionListReq {
     private Integer type;
 
-    private Integer pageSize = 1;
+    private Integer pageSize = 100;
 
-    private Integer pageNum = 100;
+    private Integer pageNum = 1;
 
     private String openid;
 

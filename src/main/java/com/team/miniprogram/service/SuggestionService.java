@@ -13,6 +13,8 @@ public interface SuggestionService {
 
     PageInfo list(SuggestionListReq suggestionListReq);
 
+    PageInfo myList(SuggestionListReq suggestionListReq);
+
     void add(Suggestion suggestion);
 
     void approval(Approval approval);
